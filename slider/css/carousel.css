@@ -40,6 +40,8 @@
     height: 100px;
     text-align: center;
     display: inline-block;
+    font-family: Pompadur; /* Гарнитура шрифта */
+    src: url(fonts/pompadur.ttf); /* Путь к файлу со шрифтом */
 }
 .shift .arrow:hover {
     background: #696969;
