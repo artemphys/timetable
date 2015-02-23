@@ -5,6 +5,7 @@
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
+    display: flex;/*чтобы стрелки не уезжали вниз*/
 }
 .slider {
     height: 100px;

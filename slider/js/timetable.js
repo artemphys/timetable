@@ -1,6 +1,8 @@
 $(document).ready(function() {
     //формируем таблицу из JSON//
     $('.list-inline li').click(function(){
+        var order = $('ul').sortable("toArray");
+        console.log(order[0]);
         if (($('table').length > 0)) {
         $('table').remove();}
         else {
@@ -21,7 +23,7 @@ $(document).ready(function() {
             };
         };
 });
-
+//действие по нажатию кнопки в таблице
         $('.container').on('click', '.btn-danger', function(){
             $(this).removeClass("btn-danger");
             $(this).addClass("btn-success");
