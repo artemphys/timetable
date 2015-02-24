@@ -6,12 +6,8 @@ $(document).ready(function() {
         $(sliderArr).click(function () {
             var thisSlide = $((sliderArr[sliderElems], this)).index('li');//Номер элемента, на котором был клик
             //console.log(thisSlide);
-            if (($('table').length > 0)) {
                 $('table').remove();
-            }
-            else {
                 $('.container').append('<table class="container-fluid table table-hover"></table>');
-            }
 
             var tableInfo = {};
             tableInfo.getJson = function () {

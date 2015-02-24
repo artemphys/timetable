@@ -9,18 +9,21 @@
 }
 .slider {
     height: 100px;
-    /*max-width: 1500px;
-    min-width: 400px;*/
+    /*max-width: 1500px;*/
+    min-width: 300px;
     width: 80%;
     overflow: hidden;
-    display: inline-block;
+    display: flex;
+    /*display: inline-block;*/
     padding: 0;
 }
 .slider ul {
     height: 100px;
-    min-width: 9999px;
+    width: 9999px;
     transition: margin-left 1s;
     overflow: hidden;
+    display: flex;
+    align-items: center;
 }
 .slider ul li {
     height: 100px;
@@ -41,8 +44,9 @@
     height: 100px;
     text-align: center;
     display: inline-block;
-    font-family: Pompadur; /* Гарнитура шрифта */
-    src: url(fonts/pompadur.ttf); /* Путь к файлу со шрифтом */
+}
+.arrow .glyphicon{
+    margin-top: 20px;
 }
 .shift .arrow:hover {
     background: #696969;
