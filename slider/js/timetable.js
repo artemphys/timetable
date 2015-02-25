@@ -1,9 +1,13 @@
 $(document).ready(function() {
     var sliderElems = $('.slider ul li');//Создаем массив из элементов слайдера
     var sliderArr = $.makeArray(sliderElems);
-
+    
         //формируем таблицу из JSON//
         $(sliderArr).click(function () {
+
+            $(sliderArr).css({"border-color":"transparent"});
+            $((sliderArr[sliderElems], this)).css({"border-color":"#5cb85c"});//выделяем цветом выбранный элемент
+
             var thisSlide = $((sliderArr[sliderElems], this)).index('li');//Номер элемента, на котором был клик
             //console.log(thisSlide);
                 $('table').remove();
@@ -34,4 +38,5 @@ $(document).ready(function() {
             $(this).addClass("btn-success");
             $(this).text('Done');
         });
+    $(sliderArr[0]).click();//fix default state
 });

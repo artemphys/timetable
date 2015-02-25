@@ -28,6 +28,7 @@
 }
 .slider > ul > li {
     border: 1px solid transparent;
+    border-radius: 5px;
     list-style-type: none;
     height: 100px;
     max-width: 150px;
@@ -61,7 +62,7 @@
     cursor: pointer;
 }
 .slider ul li:hover {
-    border: 1px solid #5cb85c;
+    border: 1px solid #5cb85c!important;
     border-radius: 5px;
     cursor: pointer;
 }
