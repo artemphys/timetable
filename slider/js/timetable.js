@@ -7,7 +7,7 @@ $(document).ready(function() {
             var thisSlide = $((sliderArr[sliderElems], this)).index('li');//Номер элемента, на котором был клик
             //console.log(thisSlide);
                 $('table').remove();
-                $('.container').append('<table class="container-fluid table table-hover"></table>');
+                $('.container').append('<table class="table table-hover"></table>');
 
             var tableInfo = {};
             tableInfo.getJson = function () {

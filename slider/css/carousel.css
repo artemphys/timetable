@@ -5,50 +5,58 @@
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
-    display: flex;/*чтобы стрелки не уезжали вниз*/
 }
 .slider {
-    height: 100px;
-    /*max-width: 1500px;*/
-    min-width: 300px;
     width: 80%;
-    overflow: hidden;
-    display: flex;
+    height: 100px;
+    float:left;
+    /*max-width: 1500px;*/
+    min-width: 396px;
     /*display: inline-block;*/
     padding: 0;
+    overflow: hidden;
 }
-.slider ul {
+.slider > ul {
+    display:block;
     height: 100px;
     width: 9999px;
     transition: margin-left 1s;
+    margin:0;
+    padding:0;
     overflow: hidden;
-    display: flex;
     align-items: center;
 }
-.slider ul li {
+.slider > ul > li {
+    border: 1px solid transparent;
+    list-style-type: none;
     height: 100px;
     max-width: 150px;
     min-width: 100px;
     float: left;
     padding: 10px;
-    text-decoration: none;
     text-align: center;
 }
-.shift .arrow {
+.shift .title {
+    display:block;
+    text-align: center;
+    font-size:24px;
+    text-transform: uppercase;
+    padding-top: 18px;
+}
+.shift > .btn {
+    float:left;
+    width:10%;
     padding-top: 20px;
     background: #808080;
-    opacity: 0.8;
-    text-decoration: none;
-    max-width: 80px;
-    min-width: 40px;
+    color:#fff;
     height: 100px;
     text-align: center;
     display: inline-block;
 }
-.arrow .glyphicon{
+.shift > .btn > .glyphicon{
     margin-top: 20px;
 }
-.shift .arrow:hover {
+.shift > .btn:hover {
     background: #696969;
     cursor: pointer;
 }
