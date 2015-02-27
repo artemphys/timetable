@@ -56,7 +56,7 @@ $(document).ready(function() {
     //Plagin to set the date
     (function( $ ) {
         $.fn.setRealDate = function() {
-            for (var i = 0; i <= 11; ++i) {
+            for (var i = 0; i <= 30; ++i) {
                 var thisDay = $('.slider ul li .date').eq(i);
                 var thisWeek = $('.slider ul li .title').eq(i);
 
