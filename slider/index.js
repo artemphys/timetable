@@ -5,7 +5,7 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(request, response) {
-  response.send('timetable/slider/public/timetable.html');
+  response.send('timetable.html');
 });
 
 app.listen(app.get('port'), function() {
