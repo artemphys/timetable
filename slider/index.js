@@ -4,8 +4,8 @@ var app = express();
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
-app.get('/public', function(request, response) {
-  response.send("timetable.html");
+app.get('/public/timetable.html', function(request, response) {
+  res.send(html);
 });
 
 app.listen(app.get('port'), function() {
