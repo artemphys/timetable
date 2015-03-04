@@ -14,7 +14,6 @@ $(document).ready(function() {
                 $((sliderArr[sliderElems], this)).css({"border-color": "#5cb85c"});//border of the active element
 
                 var thisSlide = $((sliderArr[sliderElems], this)).index('li');//the number of the active element
-                //console.log(thisSlide);
                 $('table').remove();
                 $('.container').append('<table class="table table-hover"></table>');
 
@@ -28,15 +27,20 @@ $(document).ready(function() {
 
                 //add the rows into the table
                 tableInfo.addObject = function (data) {
-                    for (var i = 0; i <= 3; ++i) {
-                        $('table').append('<tr id="' + i + '"></tr>');
-                        $('.table #' + i).append('<td>' + data.arr[thisSlide].table[i].number + '</td>');
-                        $('.table #' + i).append('<td>' + data.arr[thisSlide].table[i].time + '</td>');
-                        $('.table #' + i).append('<td>' + data.arr[thisSlide].table[i].name + '</td>');
-                        $('.table #' + i).append('<td>' + data.arr[thisSlide].table[i].money + '</td>');
-                        $('.table #' + i).append('<td>' + '<a href="#" class="btn btn-sm btn-danger" type="button">toDo</a>' + '</td>');
-                    }
-                    ;
+                    var data = data.arr[thisSlide].table;
+                    //console.log(data);
+                    _.each(data, function(num) {
+                        var tableTemplate = _.template("<tr>" +
+                        "<td><%= number %></td>" +
+                        "<td><%= time %></td>" +
+                        "<td><%= name %></td>" +
+                        "<td><%= money %></td>" +
+                        '<td>' + '<a href="#" class="btn btn-sm btn-danger" type="button">toDo</a>' + '</td>' +
+                        "</tr>");
+                        //data = data[num];
+                        //console.log(data);
+                        $('table').append(tableTemplate(data));
+                    });
                 };
             });
             $(sliderArr[0]).click();//fix default state
@@ -69,5 +73,6 @@ $(document).ready(function() {
             return this;
         };
     })(jQuery);
+
     $(sliderArr).setRealDate();
 });
