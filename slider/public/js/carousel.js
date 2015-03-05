@@ -10,7 +10,7 @@ $(function() {
         btnsWidth = 2*($('.btn').outerWidth(true)),
         itemWidth = $('.item').outerWidth(true),
         coefficient=((shiftWidth-btnsWidth)/itemWidth);
-        console.log(coefficient);
+        //console.log(coefficient);
 
         coefficient = Math.floor(coefficient);
         $('.slider').css({"width": coefficient * itemWidth + "px"});

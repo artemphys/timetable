@@ -14,8 +14,8 @@ $(document).ready(function() {
                 $((sliderArr[sliderElems], this)).css({"border-color": "#5cb85c"});//border of the active element
 
                 var thisSlide = $((sliderArr[sliderElems], this)).index('li');//the number of the active element
-                $('table').remove();
-                $('.container').append('<table class="table table-hover"></table>');
+                $('.tableFromJSON').remove();
+                $('.container').append('<table class="table table-hover tableFromJSON"></table>');
 
                 var tableInfo = {};
                 tableInfo.getJson = function () {
@@ -35,7 +35,7 @@ $(document).ready(function() {
                         '<td>' + '<a href="#" class="btn btn-sm btn-danger" type="button">toDo</a>' + '</td>' +
                         "</tr>");
                     var data = data.arr[thisSlide].table;
-                    _.each(data, function(num){$('table').append(tableTemplate(num));});
+                    _.each(data, function(num){$('.tableFromJSON').append(tableTemplate(num));});
                 };
             });
             $(sliderArr[0]).click();//fix default state
