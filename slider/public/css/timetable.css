@@ -2,3 +2,72 @@
     margin-top: 100px;
 }
 
+.shift {
+    position: relative;
+    height: 100px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.slider {
+    max-width: 770px;
+    height: 100px;
+    float:left;
+    padding: 0;
+    overflow: hidden;
+}
+.slider > ul {
+    display:block;
+    height: 100px;
+    width: 9999px;
+    transition: margin-left 1.5s;
+    margin:0;
+    padding:0;
+    overflow: hidden;
+    align-items: center;
+}
+.slider > ul > li {
+    border: 1px solid transparent;
+    border-radius: 5px;
+    list-style-type: none;
+    height: 100px;
+    /*max-width: 150px;*/
+    width: 100px;
+    float: left;
+    padding: 10px;
+    text-align: center;
+    margin: 0 5px 0 5px;
+}
+.shift .title {
+    display:block;
+    text-align: center;
+    font-size:24px;
+    text-transform: uppercase;
+    padding-top: 18px;
+}
+.shift > .btn {
+    float:left;
+    width:10%;
+    padding-top: 20px;
+    background: #808080;
+    color:#fff;
+    height: 100px;
+    text-align: center;
+    display: inline-block;
+}
+.shift > .btn > .glyphicon{
+    margin-top: 20px;
+}
+.shift > .btn:hover {
+    background: #696969;
+    cursor: pointer;
+}
+.slider ul li:hover {
+    border: 1px solid #5cb85c!important;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.table {
+    margin-top: 50px;
+}
+
