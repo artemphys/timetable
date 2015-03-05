@@ -27,9 +27,6 @@ $(document).ready(function() {
 
                 //add the rows into the table
                 tableInfo.addObject = function (data) {
-                    var data = data.arr[thisSlide].table;
-                    //console.log(data);
-                    _.each(data, function(num) {
                         var tableTemplate = _.template("<tr>" +
                         "<td><%= number %></td>" +
                         "<td><%= time %></td>" +
@@ -37,10 +34,8 @@ $(document).ready(function() {
                         "<td><%= money %></td>" +
                         '<td>' + '<a href="#" class="btn btn-sm btn-danger" type="button">toDo</a>' + '</td>' +
                         "</tr>");
-                        //data = data[num];
-                        //console.log(data);
-                        $('table').append(tableTemplate(data));
-                    });
+                    var data = data.arr[thisSlide].table;
+                    _.each(data, function(num){$('table').append(tableTemplate(num));});
                 };
             });
             $(sliderArr[0]).click();//fix default state
