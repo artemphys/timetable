@@ -7,49 +7,104 @@
     <link href="css/timetable.css" rel="stylesheet" media="screen">
 </head>
 <body>
-<div class="container ">
-    <div class="shift">
-        <a href="#" class="btn js-slide-left"><span class="glyphicon glyphicon-chevron-left"></span></a>
-        <div class="slider">
-            <ul>
-                <li class="item">
-                    <span class="date">NoDate</span>
-                    <span class="title">NoDate</span>
-                </li>
-                <li class="item">
-                    <span class="date">NoDate</span>
-                    <span class="title">NoDate</span>
-                </li>
-                <li class="item">
-                    <span class="date">NoDate</span>
-                    <span class="title">NoDate</span>
-                </li>
-                <li class="item">
-                    <span class="date">NoDate</span>
-                    <span class="title">NoDate</span>
-                </li>
-                <li class="item">
-                    <span class="date">NoDate</span>
-                    <span class="title">NoDate</span>
-                </li>
-                <li class="item">
-                    <span class="date">NoDate</span>
-                    <span class="title">NoDate</span>
-                </li>
-                <li class="item">
-                <span class="date">NoDate</span>
-                <span class="title">NoDate</span>
-            </li>
-            </ul>
+    <div class="row">
+        <div class="col-xs-6 timetable1">
+            <div class="slide-container">
+                <div class="shift">
+                    <a href="#" class="btn js-slide-left"><span class="glyphicon glyphicon-chevron-left"></span></a>
+
+                    <div class="slider">
+                        <ul>
+                            <li class="item">
+                                <span class="date">NoDate</span>
+                                <span class="title">NoDate</span>
+                            </li>
+                            <li class="item">
+                                <span class="date">NoDate</span>
+                                <span class="title">NoDate</span>
+                            </li>
+                            <li class="item">
+                                <span class="date">NoDate</span>
+                                <span class="title">NoDate</span>
+                            </li>
+                            <li class="item">
+                                <span class="date">NoDate</span>
+                                <span class="title">NoDate</span>
+                            </li>
+                            <li class="item">
+                                <span class="date">NoDate</span>
+                                <span class="title">NoDate</span>
+                            </li>
+                            <li class="item">
+                                <span class="date">NoDate</span>
+                                <span class="title">NoDate</span>
+                            </li>
+                            <li class="item">
+                                <span class="date">NoDate</span>
+                                <span class="title">NoDate</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#" class="btn js-slide-right"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                </div>
+            </div>
         </div>
-        <a href="#" class="btn js-slide-right"><span class="glyphicon glyphicon-chevron-right"></span></a>
+        <div class="col-xs-6 timetable2">
+            <div class="slide-container">
+                <div class="shift">
+                    <a href="#" class="btn js-slide-left"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                    <div class="slider">
+                        <ul>
+                            <li class="item">
+                                <span class="date">NoDate</span>
+                                <span class="title">NoDate</span>
+                            </li>
+                            <li class="item">
+                                <span class="date">NoDate</span>
+                                <span class="title">NoDate</span>
+                            </li>
+                            <li class="item">
+                                <span class="date">NoDate</span>
+                                <span class="title">NoDate</span>
+                            </li>
+                            <li class="item">
+                                <span class="date">NoDate</span>
+                                <span class="title">NoDate</span>
+                            </li>
+                            <li class="item">
+                                <span class="date">NoDate</span>
+                                <span class="title">NoDate</span>
+                            </li>
+                            <li class="item">
+                                <span class="date">NoDate</span>
+                                <span class="title">NoDate</span>
+                            </li>
+                            <li class="item">
+                                <span class="date">NoDate</span>
+                                <span class="title">NoDate</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#" class="btn js-slide-right"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                </div>
+            </div>
+        </div>
     </div>
+
     <!-- JS-->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/moment/min/moment.min.js"></script>
     <script src="bower_components/underscore/underscore-min.js"></script>
     <script src="js/timetable.js"></script>
-</div>
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function () {
+
+            $('.timetable1').timetable();
+
+            //$('.timetable2').timetable({});
+
+        });</script>
+
 </body>
 </html>
