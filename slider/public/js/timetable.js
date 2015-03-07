@@ -10,10 +10,7 @@
         var sliderList = timetableSlider.find('ul');
         var sliderListDate = sliderElems.find('.date');
         var sliderListTitle = sliderElems.find('.title');
-        var timetableShift = $('.slide-container .shift', this);
         var timetableContainer = $('.slide-container', this);
-
-//console.log(timetableAddTable);
 
 //dependence of the slider width on the number of items
         $(function() {
@@ -44,13 +41,13 @@
 
         //RIGHT-CLICK
         timetableRightButton.click(function() {
-
+            //$(sliderArr[sliderElems]).setRealDate();
             //add the items into the slider
             if(sliderArr.length<=30){
                 sliderList.append('<li class="item newItem"><span class="date">NoDate</span><span class="title">NoDate</span></li>');
                 sliderArr[sliderArr.length] = $('.item .newItem');
-                $(sliderArr).setRealDate();
-            }
+                $('.item .newItem').setRealDate();
+        }
             //stop scroll
             if (position<=-(sliderArr.length-7)*itemWidth) {
                 return false;
@@ -62,46 +59,39 @@
 
         //////////////////////////////
 
-        //Plugin to open the table
-        (function( $ ){
-            $.fn.openTable = function() {
-                //make a table using JSON//
-                $(sliderArr).click(function () {
+        //make a table using JSON//
 
-                    $(sliderArr).css({"border-color": "transparent"});
-                    $((sliderArr[sliderElems], this)).css({"border-color": "#5cb85c"});//border of the active element
+        $(sliderArr).click(function () {
+             $(sliderArr).css({"border-color": "transparent"});
+             $((sliderArr[sliderElems], this)).css({"border-color": "#5cb85c"});//border of the active element
+             var thisSlide = $((sliderArr[sliderElems], this)).index('li');//the number of the active element
+             var timetableAddTable;
+             timetableAddTable= timetableContainer.find('.tableFromJSON');
+             $(timetableAddTable).remove();
+             timetableContainer.append('<table class="table table-hover tableFromJSON"></table>');
 
-                    var thisSlide = $((sliderArr[sliderElems], this)).index('li');//the number of the active element
-                    var timetableAddTable = timetableShift.find('.tableFromJSON');
-                    //timetableAddTable;
-                    timetableContainer.append('<table class="table table-hover tableFromJSON"></table>');
-                    console.log(timetableAddTable);
-                    var tableInfo = {};
-                    tableInfo.getJson = function () {
-                        $.getJSON('02172015.json', function (data) {
-                            data.forEach(tableInfo.addObject(data));
-                        });
-                    };
-                    tableInfo.getJson();
+             var tableInfo = {};
+             tableInfo.getJson = function () {
+                 $.getJSON('02172015.json', function (data) {
+                 data.forEach(tableInfo.addObject(data));
+                 });
+             };
+             tableInfo.getJson();
 
-                    //add the rows into the table TEMPLATE
-                    tableInfo.addObject = function (data) {
-                        var tableTemplate = _.template("<tr>" +
-                        "<td><%= number %></td>" +
-                        "<td><%= time %></td>" +
-                        "<td><%= name %></td>" +
-                        "<td><%= money %></td>" +
-                        '<td>' + '<a href="#" class="btn btn-sm btn-danger" type="button">toDo</a>' + '</td>' +
-                        "</tr>");
-                        var data = data.arr[thisSlide].table;
-                        _.each(data, function(num){timetableAddTable.append(tableTemplate(num));});
-                    };
-                });
-                $(sliderArr[0]).click();//fix default state
-            };
-            return this;
-        })(jQuery);
-        $(sliderArr).openTable();
+             //add the rows into the table TEMPLATE
+             tableInfo.addObject = function (data) {
+                 var tableTemplate = _.template("<tr>" +
+                 "<td><%= number %></td>" +
+                 "<td><%= time %></td>" +
+                 "<td><%= name %></td>" +
+                 "<td><%= money %></td>" +
+                 '<td>' + '<a href="#" class="btn btn-sm btn-danger" type="button">toDo</a>' + '</td>' + "</tr>"
+                 );
+                 var tableData = data.arr[thisSlide].table;
+                 _.each(tableData, function(num){timetableContainer.find('.tableFromJSON').append(tableTemplate(num));});
+             };
+        });
+        $(sliderArr[0]).click();//fix default state
 
 //click on button in the table
         $('.slide-container').on('click', '.btn-danger', function () {
@@ -110,23 +100,24 @@
             $(this).text('Done');
         });
 
-        //Plagin to set the date
+        //Plagin to set the date (use http://moment.js)
+
         (function( $ ) {
             $.fn.setRealDate = function() {
                 for (var i = 0; i <= 30; ++i) {
                     var thisDay = sliderListDate.eq(i);
                     var thisWeek = sliderListTitle.eq(i);
-
                     var day = moment().add('days', i).format("MMM Do YY");
                     var week = moment().add('days', i).format("ddd");
 
                     $(thisDay).text(day, this);
                     $(thisWeek).text(week, this);
                 }
-                return this;
+                //return this;
             };
+            return this;
         })(jQuery);
-        $(sliderArr).setRealDate();
+        $('.item .newItem').setRealDate();
     };
     return this;
 })(jQuery);
