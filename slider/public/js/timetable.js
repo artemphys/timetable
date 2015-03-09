@@ -44,9 +44,10 @@
             //$(sliderArr[sliderElems]).setRealDate();
             //add the items into the slider
             if(sliderArr.length<=30){
+                //console.log(sliderElems);
                 sliderList.append('<li class="item newItem"><span class="date">NoDate</span><span class="title">NoDate</span></li>');
                 sliderArr[sliderArr.length] = $('.item .newItem');
-                $('.item .newItem').setRealDate();
+                //sliderArr.each(function(){setRealDate();});
         }
             //stop scroll
             if (position<=-(sliderArr.length-7)*itemWidth) {
@@ -100,11 +101,11 @@
             $(this).text('Done');
         });
 
-        //Plagin to set the date (use http://moment.js)
+        //Plagin to set the date (used http://moment.js)
 
-        (function( $ ) {
-            $.fn.setRealDate = function() {
-                for (var i = 0; i <= 30; ++i) {
+function setRealDate() {
+                for (var i = 0; i <= sliderArr.length; ++i) {
+                    console.log(i);
                     var thisDay = sliderListDate.eq(i);
                     var thisWeek = sliderListTitle.eq(i);
                     var day = moment().add('days', i).format("MMM Do YY");
@@ -113,11 +114,8 @@
                     $(thisDay).text(day, this);
                     $(thisWeek).text(week, this);
                 }
-                //return this;
             };
-            return this;
-        })(jQuery);
-        $('.item .newItem').setRealDate();
+        setRealDate();
     };
     return this;
 })(jQuery);
