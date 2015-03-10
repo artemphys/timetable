@@ -41,13 +41,14 @@
 
         //RIGHT-CLICK
         timetableRightButton.click(function() {
-            //$(sliderArr[sliderElems]).setRealDate();
             //add the items into the slider
             if(sliderArr.length<=30){
-                //console.log(sliderElems);
                 sliderList.append('<li class="item newItem"><span class="date">NoDate</span><span class="title">NoDate</span></li>');
                 sliderArr[sliderArr.length] = $('.item .newItem');
-                //sliderArr.each(function(){setRealDate();});
+                sliderElems = timetableSlider.find('ul li');//this?
+                sliderListDate = sliderElems.find('.date');
+                sliderListTitle = sliderElems.find('.title');
+                sliderElems.each(function(){setRealDate();});
         }
             //stop scroll
             if (position<=-(sliderArr.length-7)*itemWidth) {
@@ -104,8 +105,8 @@
         //Plagin to set the date (used http://moment.js)
 
 function setRealDate() {
-                for (var i = 0; i <= sliderArr.length; ++i) {
-                    console.log(i);
+                for (var i = 0; i <= 30; ++i) {
+                    //console.log(sliderListDate.eq(i));
                     var thisDay = sliderListDate.eq(i);
                     var thisWeek = sliderListTitle.eq(i);
                     var day = moment().add('days', i).format("MMM Do YY");
