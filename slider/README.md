@@ -1,36 +1,41 @@
-# node-js-getting-started
+# TIMETABLE PLUGIN v1.0.1
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
+A simple JQuery plugin.
+<img src="timeTable.gif">
+### Installation
 
-This application support the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
+##### 1. Copy TIMETABLE PLUGIN files to your app
 
-## Running Locally
 
-Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
-
-```sh
-$ git clone git@github.com:heroku/node-js-getting-started.git # or clone your own fork
-$ cd node-js-getting-started
-$ npm install
-$ npm start
+##### 2. Include script after the jQuery library:
+```javascript
+<script src="/path/to/timetable.js"><script>
 ```
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
-
-## Deploying to Heroku
-
-```
-$ heroku create
-$ git push heroku master
-$ heroku open
+##### 3. Add styles to the head section of your webpage
+```javascript
+<link href="/path/to/timetable.css" rel="stylesheet">
 ```
 
-## Documentation
+##### 4. Initialize plugin
 
-For more information about using Node.js on Heroku, see these Dev Center articles:
+Add simple html to the body of your webpage:
+```javascript
+<div data-element="timetable"></div>
+```
 
-- [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-- [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support)
-- [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
-- [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices)
-- [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
+Add initialize script:
+```javascript
+<script type="text/javascript" language="javascript">
+        $(document).ready(function () {
+            $('[data-element="timetable"]').timetable();
+        });</script>
+```
+
+### Requirements
+
+
+ * "jquery": "2.1.3"
+ * "bootstrap": "3.3.2"
+ * "underscorejs": "1.8.3"
+ * "moment.js": "2.0.0"
