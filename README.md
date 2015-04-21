@@ -1,6 +1,6 @@
 # TIMETABLE PLUGIN v1.0.1
 
-A simple JQuery plugin.
+
 <img src="timeTable.gif">
 ### Installation
 
