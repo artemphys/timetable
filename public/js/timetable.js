@@ -5,13 +5,13 @@
     // ==============================
 
     var Timetable = function (element, options) {
-        this.$element  = $(element)
-        this.options   = $.extend({}, Timetable.DEFAULTS, options)
-        this.isLoading = false
+        this.$element  = $(element);
+        this.options   = $.extend({}, Timetable.DEFAULTS, options);
+        this.isLoading = false;
         this.init(element, options)
-    }
+    };
 
-    Timetable.VERSION  = '1.0.0'
+    Timetable.VERSION  = '1.0.0';
 
     Timetable.DEFAULTS = {
         template: '<div class="slide-container">\
@@ -31,7 +31,7 @@
             </div>\
         </div>'
 
-    }
+    };
 
     Timetable.prototype.init = function (element, options) {
         var that = this;
@@ -55,18 +55,20 @@
 
 //dependence of the slider width on the number of items
         $(window).on('resize', function () {
-            var shiftWidth = shift.width(),
-                btnsWidth = 2*(timetableRightButton.outerWidth(true)),
-                coefficient=((shiftWidth-btnsWidth)/itemWidth);
+            var shiftWidth = shift.width();
+            var btnsWidth = 2*(timetableRightButton.outerWidth(true));
+            var coefficient=((shiftWidth-btnsWidth)/itemWidth);
+
             coefficient = Math.floor(coefficient);
-            console.log(coefficient);
             timetableSlider.css({"width": coefficient * itemWidth + "px"});
         });
         $(window).trigger("resize");
 
         //LEFT-CLICK
         timetableleftButton.click(function() {
-            if(position>=0) return false;
+            if(position >= 0) {
+                return false;
+            }
 
             position = Math.min((position + (itemWidth)*count), 0);
             sliderList.css({"margin-left":position + 'px'});
@@ -76,18 +78,18 @@
         //RIGHT-CLICK
         timetableRightButton.click(function() {
             //add the items into the slider
-            if(sliderArr.length<=30){
+            if(sliderArr.length <= 30) {
                 sliderList.append('<li class="item newItem"><span class="date">NoDate</span><span class="title">NoDate</span></li>');
-                sliderArr[sliderArr.length] = $('.item .newItem');
+                sliderArr[sliderArr.length] = $('.item > .newItem');
                 sliderElement = timetableSlider.find('ul li');
                 sliderListDate = sliderElement.find('.date');
                 sliderListTitle = sliderElement.find('.title');
                 sliderElement.each(function(){setRealDate();});
             }
             //stop scroll
-            if (position<=-(sliderArr.length-7)*itemWidth) {
+            if (position <= -(sliderArr.length - 7)*itemWidth) {
                 return false;
-            };
+            }
             position = position-itemWidth;
             sliderList.css({"margin-left": position + 'px'});
             return false;
@@ -98,25 +100,25 @@
         //make a table using JSON//
 
         $(sliderArr).click(function () {
-            $(sliderArr).css({"border-color": "transparent"});
-            $((sliderArr[sliderElement], this)).css({"border-color": "#5cb85c"});//border of the active element
             var thisSlide = $((sliderArr[sliderElement], this)).index('li');//the number of the active element
             var timetableAddTable;
-            timetableAddTable= timetableContainer.find('.tableFromJSON');
+
+            $(sliderArr).css({"border-color": "transparent"});
+            $((sliderArr[sliderElement], this)).css({"border-color": "#5cb85c"});//border of the active element
+            timetableAddTable = timetableContainer.find('.tableFromJSON');
             $(timetableAddTable).remove();
             timetableContainer.append('<table class="table table-hover tableFromJSON"></table>');
 
             var tableInfo = {};
             tableInfo.getJson = function () {
-                $.getJSON('02172015.json', function (data) {
-                    //console.log(data.arr);
+                $.getJSON('02172015.json', function(data) {
                     tableInfo.addObject(data);
                 });
             };
             tableInfo.getJson();
 
             //add the rows into the table TEMPLATE
-            tableInfo.addObject = function (data) {
+            tableInfo.addObject = function(data) {
                 var tableTemplate = _.template("<tr>" +
                     "<td><%= number %></td>" +
                     "<td><%= time %></td>" +
@@ -125,13 +127,16 @@
                     '<td>' + '<a href="#" class="btn btn-sm btn-danger" type="button">toDo</a>' + '</td>' + "</tr>"
                 );
                 var tableData = data.arr[thisSlide].table;
-                _.each(tableData, function(num){timetableContainer.find('.tableFromJSON').append(tableTemplate(num));});
+                _.each(tableData, function(num) {
+                    timetableContainer.find('.tableFromJSON').append(tableTemplate(num));
+                });
             };
         });
+
         $(sliderArr[0]).click();//fix default state
 
 //click on button in the table
-        $('.slide-container').on('click', '.btn-danger', function () {
+        $('.slide-container').on('click', '.btn-danger', function() {
             $(this).removeClass("btn-danger");
             $(this).addClass("btn-success");
             $(this).text('Done');
@@ -150,10 +155,10 @@
                 $(thisDay).text(day, this);
                 $(thisWeek).text(week, this);
             }
-        };
+        }
         setRealDate();
 
-    }
+    };
     ///END
 
     //// Attach events handlers
@@ -163,41 +168,47 @@
 
 
     Timetable.prototype.getDefaults = function () {
-        return Timetable.DEFAULTS
-    }
+        return Timetable.DEFAULTS;
+    };
 
     Timetable.prototype.getOptions = function (options) {
-        options = $.extend({}, this.getDefaults(), this.$element.data(), options)
-        return options
-    }
+        options = $.extend({}, this.getDefaults(), this.$element.data(), options);
+        return options;
+    };
 
 // TIMETABLE PLUGIN DEFINITION
     // ========================
 
     function Plugin(option) {
         return this.each(function () {
-            var $this   = $(this)
-            var data    = $this.data('timetable')
-            var options = typeof option == 'object' && option
+            var $this   = $(this);
+            var data    = $this.data('timetable');
+            var options = typeof option == 'object' && option;
 
-            if (!data && option == 'destroy') return
-            if (!data) $this.data('timetable', (data = new Timetable(this, options)))
-            if (typeof option == 'string') data[option]()
+            if (!data && option == 'destroy') {
+                return;
+            }
+            if (!data) {
+                $this.data('timetable', (data = new Timetable(this, options)));
+            }
+            if (typeof option == 'string') {
+                data[option]()
+            }
         })
     }
 
-    var old = $.fn.timetable
+    var old = $.fn.timetable;
 
-    $.fn.timetable             = Plugin
-    $.fn.timetable.Constructor = Timetable
+    $.fn.timetable             = Plugin;
+    $.fn.timetable.Constructor = Timetable;
 
 
     // TIMETABLE NO CONFLICT
     // ==================
 
     $.fn.timetable.noConflict = function () {
-        $.fn.timetable = old
-        return this
+        $.fn.timetable = old;
+        return this;
     };
 }(jQuery);
 
